@@ -1,0 +1,97 @@
+# Grunnurinn að þessari skrá var búinn til með: dbt run-operation generate_model_yaml --args '{"model_names": ["stadfang"]}'
+
+version: 2
+
+models:
+  - name: stadfang
+    description: "Staðföng og flokkun þeirra."
+    columns:
+      - name: stadfang_yfirflokkur_id
+        tests:
+          - not_always_null_or_empty
+          - relationship_defined:
+              to_model: ref('stadfang_yfirflokkur')
+              to_column: id
+      - name: stadfang_flokkur_id
+        tests:
+          - not_always_null_or_empty
+          - relationship_defined:
+              to_model: ref('stadfang_flokkur')
+              to_column: id
+      - name: hvad
+        tests:
+          - not_always_null_or_empty
+          - not_null # Við viljum tóma strenginn frekar
+      - name: postnumer_id
+        tests:
+          - not_null_or_empty 
+          # Við eigum enga póstnúmeratöflu hér svo við prófum ekki venslin.
+      - name: sveitarfelag_numer
+        tests:
+          - not_null_or_empty
+      - name: heiti_nefnifall
+        tests:
+          - not_null_or_empty
+      - name: heiti_thagufall
+        tests:
+          - not_null_or_empty:
+              config:
+                severity: warn # Þetta er þekkt vandamál í gæðum upprunagagna
+                error_if: ">2000" # Við viljum samt fá að vita ef þetta eykst verulega (er undir þúsund í dag). Lækkið þetta niður í 500 ef þið viljið sjá villur.
+      - name: husnumer
+        tests:
+          - not_always_null_or_empty
+      - name: husnumer_fra
+        tests:
+          - not_always_null
+      - name: husnumer_til
+        tests:
+          - not_always_null
+      - name: husnumer_vidskeyti
+        tests:
+          - not_null # Við viljum tóma strenginn frekar
+      - name: serheiti
+        tests:
+          - not_null
+      - name: veffang
+        tests:
+          - not_always_null
+      - name: heitinumer
+        tests:
+          - not_null
+      - name: stadfang_hnit_tegund_id
+        tests:
+          - not_null
+          - relationship_defined:
+              to_model: ref('stadfang_hnit_tegund')
+              to_column: id
+      - name: stadfang_hnit_stada_id
+        tests:
+          - not_null
+          - relationship_defined:
+              to_model: ref('stadfang_hnit_stada')
+              to_column: id
+      - name: hnit
+        tests:
+          - not_null
+      - name: wgs84_breiddargrada
+        tests:
+          - not_null
+          - value_range: # Nær yfir allt Ísland
+              from: 63
+              to: 67
+      - name: wgs84_lengdargrada
+        tests:
+          - not_null
+          - value_range: # Nær yfir allt Ísland
+              from: -25
+              to: -13
+      - name: sidast_snert
+        tests:
+          - not_always_null
+      - name: upprunakerfi_id
+        tests:
+          - not_null_or_empty
+      - name: sott
+        tests:
+          - not_null

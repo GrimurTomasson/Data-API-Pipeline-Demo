@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stadfang_hnit_tegund
+    description: "Tegund hnits"
+    columns:
+      - name: id
+        tests:
+          - not_null_or_empty
+          - unique
+      - name: lysing
+        tests:
+          - not_null_or_empty

@@ -6,7 +6,7 @@ SELECT
 	,CAST (s.properties_id AS int) AS id
 	,syf.id AS stadfang_yfirflokkur_id
 	,sf.id AS stadfang_flokkur_id
-	,CAST (s.properties_rekstraradili AS nvarchar(250)) AS hvad
+	,CAST (COALESCE (s.properties_rekstraradili, '') AS nvarchar(250)) AS hvad
 	,CAST (s.properties_heinum AS INT) AS heitinumer -- Lykill í staðfangaskrá HMS
 	,CAST (s.properties_veffang AS nvarchar(500)) AS veffang
 	,CAST (s.properties_lat AS decimal(6,4)) AS hnit_nordlaeg_breidd

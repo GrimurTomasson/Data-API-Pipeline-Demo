@@ -4,7 +4,7 @@ SELECT DISTINCT -- Fjölfaldanir út af sorphirðuhverfamörkum sem hafa sniðme
     ,CAST (RIGHT ('000' + CAST (s.svfnr AS nvarchar(4)), 4) AS nvarchar(4)) AS sveitarfelag_numer
 	,CAST (s.byggd AS int) AS sveitarfelag_byggd
 	,CAST (s.heiti_nf AS nvarchar(250)) AS heiti_nefnifall
-	,CAST (s.heiti_tgf AS nvarchar(250)) AS heiti_thagufall
+	,CAST (COALESCE (s.heiti_tgf, '') AS nvarchar(250)) AS heiti_thagufall
 	,COALESCE (CAST (s.husnr AS nvarchar(250)), '') AS husnumer
 	,dapi_specific.SplitHousenumber (s.husnr, 'FROM') AS husnumer_fra
 	,dapi_specific.SplitHousenumber (s.husnr, '') AS husnumer_til	

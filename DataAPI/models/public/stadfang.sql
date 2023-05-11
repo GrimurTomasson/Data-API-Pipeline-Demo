@@ -1,7 +1,7 @@
 SELECT
 	t.stadfang_yfirflokkur_id
 	,t.stadfang_flokkur_id
-	,t.hvad
+	,COALESCE (t.hvad, '') AS hvad
 	,s.postnumer_id
 	,s.sveitarfelag_numer
 	,s.heiti_nefnifall

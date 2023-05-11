@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stadfang_yfirflokkur
+    description: "Yfirflokkur staðfangs, kemur frá Byggðastofnun."
+    columns:
+      - name: id
+        tests:
+          - not_null_or_empty
+          - unique
+      - name: lysing
+        tests:
+          - not_null_or_empty
