@@ -20,7 +20,7 @@ Clone the repo
 - `database->port` (1433 if you are using the default)
 	
 ### Running the demo
-Perform the following either on a command prompt or a PowerShell console.  
+Perform the following either on a *command prompt* or in a *PowerShell* console.  
 
 #### Create two SQL Server databases
  If the following databases are local you don't need to change any configs, otherwise search for `localhost`.  
@@ -41,5 +41,5 @@ In folder `ExtractionLoad`
 #### Examine the results
 - Check what tables were generated in both databases.
 - Check out the files in 
-    - `API-Pipeline_last_run`
+    - `API-Pipeline_last_run/`
     - `DataAPI/target/`
