@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: hus-og-mannvirkjastofnun
+    database: "{{ var('private-database') }}"
+    schema: "{{ var('hus-og-mannvirkjastofnun-staging') }}"
+    tables:
+      - name: stadfangaskra_stg

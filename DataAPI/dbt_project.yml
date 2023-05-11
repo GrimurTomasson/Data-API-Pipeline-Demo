@@ -1,0 +1,57 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'DataAPI'
+version: '1.0.0'
+
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'DATA_API'
+
+# These configurations specify where dbt should look for different types of files.
+# The `source-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+    - "target"
+    - "dbt_modules"
+
+vars:
+  private-database: 'Analytical-Demo-API-Private'
+  byggdastofnun-staging: 'byggdastofnun'
+  hus-og-mannvirkjastofnun-staging: 'hus_og_mannvirkjastofnun'
+
+  staging-dagsetningar-dalkur: 'sott'
+  nyjasta-staging-sett: '{{ var("staging-dagsetningar-dalkur") }} = (SELECT MAX({{ var("staging-dagsetningar-dalkur") }}) FROM {{ this }})'
+      
+# Default behaviour for all models.
+models:
+  DataAPI: # Name of the project
+    +materialized: table
+
+    private:
+      +database: Analytical-Demo-API-Private
+      
+      +tags: ['private']
+      byggdastofnun:
+        +schema: 'byggdastofnun' # Við getum ekki vísað í breytur sem eru skilgreindar í sömu skrá
+        +tags: ['byggdastofnun']
+        +remove_relation_postfix: '_int'
+      
+      hus_og_mannvirkjastofnun:
+        +schema: 'hus_og_mannvirkjastofnun'
+        +tags: ['hms']
+        +remove_relation_postfix: '_int'
+
+    public:
+      +tags: ['public']
+      

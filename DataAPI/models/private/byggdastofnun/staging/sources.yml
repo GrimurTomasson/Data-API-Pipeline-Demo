@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: byggdastofnun
+    database: "{{ var('private-database') }}"
+    schema: "{{ var('byggdastofnun-staging') }}"
+    tables:
+      - name: thjonustukortagogn_stg

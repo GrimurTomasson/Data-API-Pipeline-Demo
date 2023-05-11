@@ -1,0 +1,1 @@
+SELECT id, lysing FROM {{ ref('stadfang_yfirflokkur_int') }}
