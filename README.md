@@ -13,6 +13,9 @@ Clone the repo
 ### Setup Evolve, and add an OS path
 - https://github.com/lecaillon/Evolve/releases/tag/3.1.0
 
+### Install SQL Server
+- https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+	- Pick the *Developer* version 	
 
 ### Update the following database config in api_config.yml to values to SQL Server you have db_owner or higher privledges on
 - `database->server`
