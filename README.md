@@ -16,6 +16,9 @@ Clone the repo
 ### Install SQL Server
 - https://www.microsoft.com/en-us/sql-server/sql-server-downloads
 	- Pick the *Developer* version 	
+	- Basic
+	- Install SSMS
+	- Restart
 
 ### Update the following database config in api_config.yml to values to SQL Server you have db_owner or higher privledges on
 - `database->server`
