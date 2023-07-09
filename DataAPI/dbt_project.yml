@@ -26,12 +26,11 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 vars:
-  private-database: 'Analytical-Demo-API-Private'
   byggdastofnun-staging: 'byggdastofnun'
   hus-og-mannvirkjastofnun-staging: 'hus_og_mannvirkjastofnun'
 
   staging-dagsetningar-dalkur: 'sott'
-  nyjasta-staging-sett: '{{ var("staging-dagsetningar-dalkur") }} = (SELECT MAX({{ var("staging-dagsetningar-dalkur") }}) FROM {{ this }})'
+  # nyjasta-staging-sett: '{{ var("staging-dagsetningar-dalkur") }} = (SELECT MAX({{ var("staging-dagsetningar-dalkur") }}) FROM {{ this }})'
       
 # Default behaviour for all models.
 models:
@@ -39,7 +38,7 @@ models:
     +materialized: table
 
     private:
-      +database: Analytical-Demo-API-Private
+      +database: "{{ env_var('DAPI_PRIVATE_DATABASE_INSTANCE') }}"
       
       +tags: ['private']
       byggdastofnun:
@@ -49,7 +48,7 @@ models:
       
       hus_og_mannvirkjastofnun:
         +schema: 'hus_og_mannvirkjastofnun'
-        +tags: ['hms']
+        tags: ['hms']
         +remove_relation_postfix: '_int'
 
     public:

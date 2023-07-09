@@ -24,4 +24,5 @@ FROM
 	JOIN {{ ref('stadfang_hnit_tegund_int') }} ht ON ht.upprunakerfi_id = s.teghnit
 	JOIN {{ ref('stadfang_hnit_stada_int') }} hs ON hs.upprunakerfi_id = s.yfirfarid
 WHERE
-	s.{{ var('nyjasta-staging-sett') }}
+	-- If the following becomes a pattern, we can package it as a macro
+	s.{{ var("staging-dagsetningar-dalkur") }} = ( SELECT MAX({{ var("staging-dagsetningar-dalkur") }}) FROM {{ source('hus-og-mannvirkjastofnun', 'stadfangaskra_stg') }} )

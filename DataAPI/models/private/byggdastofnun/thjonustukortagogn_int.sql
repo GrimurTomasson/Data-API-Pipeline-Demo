@@ -19,4 +19,4 @@ FROM
 	JOIN {{ ref('stadfang_flokkur_int') }} sf ON sf.upprunakerfi_id = s.properties_flokkur
 WHERE 
     s.properties_heinum IS NOT NULL -- Þessi gögn eru gagnlaus ef við getum ekki lyklað þau við staðföng
-    AND s.{{ var('nyjasta-staging-sett') }}
+	AND s.{{ var("staging-dagsetningar-dalkur") }} = ( SELECT MAX({{ var("staging-dagsetningar-dalkur") }}) FROM {{ source('byggdastofnun', 'thjonustukortagogn_stg') }} )

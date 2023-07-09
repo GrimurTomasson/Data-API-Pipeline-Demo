@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: hus-og-mannvirkjastofnun
-    database: "{{ var('private-database') }}"
+    database: "{{ env_var('DAPI_PRIVATE_DATABASE_INSTANCE') }}"
     schema: "{{ var('hus-og-mannvirkjastofnun-staging') }}"
     tables:
       - name: stadfangaskra_stg

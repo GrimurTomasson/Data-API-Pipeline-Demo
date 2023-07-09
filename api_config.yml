@@ -4,9 +4,6 @@ data-api-pipeline:
   data-file-location: API-Pipeline_last_run # no slashes before or after! One directory, not a tree.
 
 database:
-  name: 'Analytical-Demo-API' # We require the name of the target database and project folder to be the same. Check if this is still true. Can be overwritten with an environment variable in data-api-pipeline.env.
-  server: 'localhost' # Can be overwritten with an environment variable in data-api-pipeline.env.
-  port: 1433
   connection-string-template: DRIVER={ODBC Driver 18 for SQL Server};SERVER={{database-server}};DATABASE={{database-name}};Trusted_Connection=yes;Encrypt=no; # Known variables: database-server, database-name, database-user, database-password
   type: SQL-Server
 
@@ -33,7 +30,7 @@ public-schemas: # Schemas need to be case-correct
 documentation:
     publish-to: 'Confluence' # Only supported target right now! See the data-api-pipeline.env template for variables!
     data-health-report:
-      generate: True
+      generate: False # Bugged with current version of dbt!
       publish: False
     definition-health-report:
       generate: True
