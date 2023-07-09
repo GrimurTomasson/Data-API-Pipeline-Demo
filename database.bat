@@ -1,2 +1,2 @@
-Evolve --connection-string "Server=localhost;Database=Analytical-Demo-API-Private;Trusted_Connection=True;" -s API -s dapi_generic -s byggdastofnun -s hus_og_mannvirkjastofnun --location ChangeSets %1 SQLServer
-Evolve --connection-string "Server=localhost;Database=Analytical-Demo-API;Trusted_Connection=True;" -s API -s dapi_generic --location ChangeSets/dapi_support_functions %1 SQLServer
+Evolve --connection-string "Server=%DAPI_DATABASE_SERVER%;Database=%DAPI_PRIVATE_DATABASE_INSTANCE%;Trusted_Connection=True;" -s API -s dapi_generic -s byggdastofnun -s hus_og_mannvirkjastofnun --location ChangeSets %1 SQLServer
+Evolve --connection-string "Server=%DAPI_DATABASE_SERVER%;Database=%DAPI_DATABASE_INSTANCE%;Trusted_Connection=True;" -s API -s dapi_generic --location ChangeSets/dapi_support_functions %1 SQLServer

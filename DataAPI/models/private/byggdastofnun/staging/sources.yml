@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: byggdastofnun
-    database: "{{ var('private-database') }}"
+    database: "{{ env_var('DAPI_PRIVATE_DATABASE_INSTANCE') }}"
     schema: "{{ var('byggdastofnun-staging') }}"
     tables:
       - name: thjonustukortagogn_stg
