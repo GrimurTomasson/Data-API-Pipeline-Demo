@@ -39,4 +39,4 @@ documentation:
       generate: True
       publish: False
 
-log-level: 'debug' # debug, warning, info, error, critical
+log-level: 'error' # debug, warning, info, error, critical
