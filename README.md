@@ -23,8 +23,8 @@ Clone the repo
 
 #### Create two SQL Server databases
  As an alternative, you can change en environment variables in the next step.
-- `Analytical-Demo-API`
-- `Analytical-Demo-API-Private`
+- `Dapi-Demo-API`
+- `Dapi-Demo-API-Private`
 
 ### Update the `dapi.env` variables
 Odds are you only need to edit the following variables. You only need to edit the latter two if you did not create the databases suggested.

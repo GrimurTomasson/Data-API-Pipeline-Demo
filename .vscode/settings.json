@@ -1,0 +1,13 @@
+{
+    "terminal.integrated.profiles.windows": {
+
+        "dapi demo": {
+            "path": "pwsh.exe",
+            "args": [
+                "-noexit",
+                "-file",
+                "./set_terminal.ps1"
+            ]
+
+    }
+}
