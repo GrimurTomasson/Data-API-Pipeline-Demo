@@ -26,16 +26,18 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_packages"
 
 vars:
-  byggdastofnun-staging: 'byggdastofnun'
-  hus-og-mannvirkjastofnun-staging: 'hus_og_mannvirkjastofnun'
+  byggdastofnun-staging: 'byggdastofnun_staging'
+  hus-og-mannvirkjastofnun-staging: 'hus_og_mannvirkjastofnun_staging'
 
   staging-dagsetningar-dalkur: 'sott'
   # nyjasta-staging-sett: '{{ var("staging-dagsetningar-dalkur") }} = (SELECT MAX({{ var("staging-dagsetningar-dalkur") }}) FROM {{ this }})'
       
-# Default behaviour for all models.
 models:
-  DataAPI: # Name of the project
+  DataAPI: 
     +materialized: table
+
+    public:
+      +tags: ['public']
 
     private:
       +database: "{{ env_var('DAPI_PRIVATE_DATABASE_INSTANCE') }}"
@@ -44,13 +46,7 @@ models:
       byggdastofnun:
         +schema: 'byggdastofnun' # Við getum ekki vísað í breytur sem eru skilgreindar í sömu skrá
         +tags: ['byggdastofnun']
-        +remove_relation_postfix: '_int'
       
       hus_og_mannvirkjastofnun:
         +schema: 'hus_og_mannvirkjastofnun'
         tags: ['hms']
-        +remove_relation_postfix: '_int'
-
-    public:
-      +tags: ['public']
-      

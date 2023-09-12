@@ -20,9 +20,9 @@ SELECT DISTINCT -- Fjölfaldanir út af sorphirðuhverfamörkum sem hafa sniðme
 	,CAST (s.hnitnum AS nvarchar(250)) AS upprunakerfi_id
 	,s.sott
 FROM 
-    {{ source('hus-og-mannvirkjastofnun', 'stadfangaskra_stg') }} s
+    {{ source('hus-og-mannvirkjastofnun', 'stadfangaskra') }} s
 	JOIN {{ ref('stadfang_hnit_tegund_int') }} ht ON ht.upprunakerfi_id = s.teghnit
 	JOIN {{ ref('stadfang_hnit_stada_int') }} hs ON hs.upprunakerfi_id = s.yfirfarid
 WHERE
 	-- If the following becomes a pattern, we can package it as a macro
-	s.{{ var("staging-dagsetningar-dalkur") }} = ( SELECT MAX({{ var("staging-dagsetningar-dalkur") }}) FROM {{ source('hus-og-mannvirkjastofnun', 'stadfangaskra_stg') }} )
+	s.{{ var("staging-dagsetningar-dalkur") }} = ( SELECT MAX({{ var("staging-dagsetningar-dalkur") }}) FROM {{ source('hus-og-mannvirkjastofnun', 'stadfangaskra') }} )

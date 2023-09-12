@@ -14,11 +14,11 @@ def getEnvValue (variableName, defaultValue):
 request = "https://fasteignaskra.is/Stadfangaskra.csv"
 
 db_server = getEnvValue ("DAPI_DATABASE_SERVER", "localhost")
-db_instance = getEnvValue ("DAPI_PRIVATE_DATABASE_INSTANCE", "Analytical-Demo-API-Private")
+db_instance = getEnvValue ("DAPI_PRIVATE_DATABASE_INSTANCE", "Dapi-Demo-API-Private")
 db_connection_string = "DRIVER={ODBC Driver 18 for SQL Server};SERVER=" + db_server + ";DATABASE=" + db_instance + ";Trusted_Connection=yes;Encrypt=no;"
 
 # SELECT STRING_AGG (COLUMN_NAME, ',') AS dalkar FROM INFORMATION_SCHEMA.COLUMNS where TABLE_CATALOG = 'Analytical-Demo-API-Private' AND TABLE_SCHEMA = 'hus_og_mannvirkjastofnun' AND TABLE_NAME = 'stadfangaskra_stg'
-query = "INSERT INTO hus_og_mannvirkjastofnun.stadfangaskra_stg (FID,HNITNUM,SVFNR,BYGGD,LANDNR,HEINUM,MATSNR,POSTNR,HEITI_NF,HEITI_TGF,HUSNR,BOKST,VIDSK,SERHEITI,DAGS_INN,DAGS_LEIDR,GAGNA_EIGN,TEGHNIT,YFIRFARID,YFIRF_HEITI,ATH,NAKV_XY,HNIT,N_HNIT_WGS84,E_HNIT_WGS84,NOTNR,LM_HEIMILISFANG,VEF_BIRTING,HUSMERKING,sott) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+query = "INSERT INTO hus_og_mannvirkjastofnun_staging.stadfangaskra (FID,HNITNUM,SVFNR,BYGGD,LANDNR,HEINUM,MATSNR,POSTNR,HEITI_NF,HEITI_TGF,HUSNR,BOKST,VIDSK,SERHEITI,DAGS_INN,DAGS_LEIDR,GAGNA_EIGN,TEGHNIT,YFIRFARID,YFIRF_HEITI,ATH,NAKV_XY,HNIT,N_HNIT_WGS84,E_HNIT_WGS84,NOTNR,LM_HEIMILISFANG,VEF_BIRTING,HUSMERKING,sott) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
 
 conn = pyodbc.connect (db_connection_string)
 conn.autocommit = False

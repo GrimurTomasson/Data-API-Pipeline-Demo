@@ -6,4 +6,4 @@ SELECT DISTINCT
 	,CAST (s.properties_flokkur AS nvarchar(250)) AS lysing
 	,s.properties_flokkur AS upprunakerfi_id 
 FROM 
-	{{ source('byggdastofnun','thjonustukortagogn_stg') }} s
+	{{ source('byggdastofnun','thjonustukortagogn') }} s

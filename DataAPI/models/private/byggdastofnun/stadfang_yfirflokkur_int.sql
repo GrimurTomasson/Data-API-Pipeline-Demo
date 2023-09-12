@@ -19,7 +19,7 @@ othekkt AS (
 	SELECT 
         DISTINCT s.properties_yfirflokkur AS upprunakerfi_id
     FROM 
-        {{ source('byggdastofnun', 'thjonustukortagogn_stg') }} s 
+        {{ source('byggdastofnun', 'thjonustukortagogn') }} s 
     WHERE 
         s.properties_yfirflokkur NOT IN (SELECT DISTINCT upprunakerfi_id FROM thekkt)
 ),

@@ -13,10 +13,10 @@ def getEnvValue (variableName, defaultValue):
 request = "https://thjonustukort.is/geoserver/wfs?SERVICE=WFS&REQUEST=GetFeature&TYPENAME=byggdast:v_nidurhal&SRSNAME=EPSG:3057&OutputFormat=JSON"
 
 db_server = getEnvValue ("DAPI_DATABASE_SERVER", "localhost")
-db_instance = getEnvValue ("DAPI_PRIVATE_DATABASE_INSTANCE", "Analytical-Demo-API-Private")
+db_instance = getEnvValue ("DAPI_PRIVATE_DATABASE_INSTANCE", "Dapi-Demo-API-Private")
 db_connection_string = "DRIVER={ODBC Driver 18 for SQL Server};SERVER=" + db_server + ";DATABASE=" + db_instance + ";Trusted_Connection=yes;Encrypt=no;"
 
-query = "INSERT INTO byggdastofnun.thjonustukortagogn_stg (type, id, properties_id, properties_heinum, properties_yfirflokkur, properties_flokkur, properties_rekstraradili, properties_heimilisfang, properties_postnr, properties_sveitarfelag, properties_veffang, properties_uppruni, properties_lng, properties_lat, sott) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+query = "INSERT INTO byggdastofnun_staging.thjonustukortagogn (type, id, properties_id, properties_heinum, properties_yfirflokkur, properties_flokkur, properties_rekstraradili, properties_heimilisfang, properties_postnr, properties_sveitarfelag, properties_veffang, properties_uppruni, properties_lng, properties_lat, sott) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
 
 conn = pyodbc.connect (db_connection_string)
 conn.autocommit = False

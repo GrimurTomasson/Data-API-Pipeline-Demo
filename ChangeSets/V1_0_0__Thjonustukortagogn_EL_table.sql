@@ -1,4 +1,4 @@
-CREATE TABLE byggdastofnun.thjonustukortagogn_stg (
+CREATE TABLE byggdastofnun_staging.thjonustukortagogn (
 	type nvarchar(250) not null,
 	id nvarchar(250) not null,
 	properties_id int,

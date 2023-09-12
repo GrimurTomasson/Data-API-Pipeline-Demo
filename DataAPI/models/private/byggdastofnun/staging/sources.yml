@@ -5,4 +5,4 @@ sources:
     database: "{{ env_var('DAPI_PRIVATE_DATABASE_INSTANCE') }}"
     schema: "{{ var('byggdastofnun-staging') }}"
     tables:
-      - name: thjonustukortagogn_stg
+      - name: thjonustukortagogn

@@ -1,4 +1,4 @@
-CREATE TABLE hus_og_mannvirkjastofnun.stadfangaskra_stg(
+CREATE TABLE hus_og_mannvirkjastofnun_staging.stadfangaskra(
 	FID	nvarchar(250)
 	,HNITNUM nvarchar(250)
 	,SVFNR nvarchar(250)

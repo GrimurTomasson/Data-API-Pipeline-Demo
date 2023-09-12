@@ -14,7 +14,7 @@ othekkt AS (
 	SELECT 
         DISTINCT s.yfirfarid AS upprunakerfi_id
     FROM 
-        {{ source('hus-og-mannvirkjastofnun', 'stadfangaskra_stg') }} s 
+        {{ source('hus-og-mannvirkjastofnun', 'stadfangaskra') }} s 
     WHERE 
         s.yfirfarid NOT IN (SELECT DISTINCT upprunakerfi_id FROM thekkt)
 ),

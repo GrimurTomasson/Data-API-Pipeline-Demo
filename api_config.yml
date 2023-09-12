@@ -16,16 +16,17 @@ latest:
 
 history:
   snapshot-date-column: 'sogu_dagur'
+  snapshot-database: 'Dapi-Demo-API-Private' # Optional. Where the snapshots will be created. Views will always be in the public part.
   projects:
     - project:
-        source-schema: 'Nustada'
-        snapshot-schema: 'Private_snapshot'
-        public-schema: 'Saga'
+        source-schema: 'nustada'
+        snapshot-schema: 'snapshot'
+        public-schema: 'saga'
     
 # Used for both documentation creation and validation (BG/DD/dbt models)
 public-schemas: # Schemas need to be case-correct
-  - 'Nustada'
-  - 'Saga'
+  - 'nustada'
+  - 'saga'
   
 documentation:
     publish-to: 'Confluence' # Only supported target right now! See the data-api-pipeline.env template for variables!
@@ -38,5 +39,10 @@ documentation:
     user-documentation:
       generate: True
       publish: False
+
+audit: 
+  enabled: True
+  database: Dapi-Demo-API-Private
+  schema: audit
 
 log-level: 'debug' # debug, warning, info, error, critical
