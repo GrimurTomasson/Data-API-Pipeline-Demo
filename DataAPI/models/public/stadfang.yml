@@ -74,13 +74,13 @@ models:
       - name: hnit
         tests:
           - not_null
-      - name: wgs84_breiddargrada
+      - name: WGS84_breiddargrada
         tests:
           - not_null
           - value_range: # Nær yfir allt Ísland
               from: 63
               to: 67
-      - name: wgs84_lengdargrada
+      - name: WGS84_lengdargrada
         tests:
           - not_null
           - value_range: # Nær yfir allt Ísland
