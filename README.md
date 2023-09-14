@@ -1,7 +1,29 @@
 # Data-API-Pipeline-Demo
 Data API demo.
 
-## Micro Instructions
+## Prerequisites
+- git
+- .net 7+
+- [SQL Server](###sql-server)
+- [Python 3.11.x](###python)
+- [Evolve](###evolve)  
+
+## TLDR
+In an **admin** mode *PowerShell*.
+- `cd c:/temp`
+- `git clone https://github.com/GrimurTomasson/Data-API-Pipeline-Demo.git`
+- `cd Data-API-Pipeline-Demo`
+- `c:\"Program files"\python311\python.exe -m venv .venv`
+- `.\.venv\Scripts\Activate.ps1`
+- `pip install requests`
+- `pip install flatten_json`
+- `pip install -U git+https://github.com/GrimurTomasson/Data-API-Pipeline@r1.6`
+- Create two *SQL Server* databases in a *localhost* server named:
+	- Dapi-Demo-API
+	- Dapi-Demo-API-Private
+- `./run_pipeline.ps1`
+
+## Micro Instructions - Step by step  
 Clone the repo 
 ### Install DAPI
 - https://github.com/GrimurTomasson/Data-API-Pipeline
@@ -12,14 +34,6 @@ Clone the repo
 	
 ### Setup Evolve, and add an OS path
 - https://github.com/lecaillon/Evolve/releases/tag/3.1.0
-
-### Install SQL Server
-- As an alternative, you can also use a SQL Server you have access to and at least *db_owner* privileges.
-- https://www.microsoft.com/en-us/sql-server/sql-server-downloads
-	- Pick the *Developer* version 	
-	- Basic
-	- Install SSMS
-	- Restart
 
 #### Create two SQL Server databases
  As an alternative, you can change en environment variables in the next step.
@@ -58,3 +72,23 @@ In folder `ExtractionLoad`
 - Check out the files in 
     - `API-Pipeline_last_run/`
     - `DataAPI/target/`
+
+## Uppsetning hugbúnaðar
+Shorthand instructions, for developers.
+
+### SQL Server
+https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+- Pick the *Developer* version 	
+- Basic
+- Install SSMS
+- Restart
+
+### Python
+In **admin** mode *PowerShell*. Note, execution policy in *PowerShell* may need to be changed.
+`[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+`Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe" -OutFile "c:/temp/python-3.11.5.exe"`
+`c:/temp/python-3.11.5.exe /quiet InstallAllUsers=0 InstallLauncherAllUsers=0 PrependPath=1 Include_test=0`
+
+### Evolve
+in *PowerShell*.
+`dotnet tool install --global Evolve.Tool`
