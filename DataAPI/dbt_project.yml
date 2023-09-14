@@ -37,6 +37,7 @@ models:
     +materialized: table
 
     public:
+      +schema: 'nustada'
       +tags: ['public']
 
     private:

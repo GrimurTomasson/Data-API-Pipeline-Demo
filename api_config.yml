@@ -11,7 +11,7 @@ concept-glossary:
   type: 'None' # 'None' if no concept glossary is present.
 
 latest:
-    name: 'Nustada'
+    name: 'nustada'
     relative-path: 'DataAPI' # No slashes before or after!
 
 history:
@@ -31,7 +31,7 @@ public-schemas: # Schemas need to be case-correct
 documentation:
     publish-to: 'Confluence' # Only supported target right now! See the data-api-pipeline.env template for variables!
     data-health-report:
-      generate: False # Bugged with current version of dbt!
+      generate: True
       publish: False
     definition-health-report:
       generate: True

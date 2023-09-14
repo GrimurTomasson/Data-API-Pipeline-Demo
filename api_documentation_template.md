@@ -4,7 +4,7 @@ Hlutverk þessa kóðasafns er að vera gott sýnidæmi um uppbyggingu gagnavið
 Þetta skjal er búið til vélrænt, allar handvirkar breytingar munu tapast.
 
 # API Vensl
-Venslin í þessu viðmóti skiptast í tvo flokka, nústöðu og söguleg gögn. Nústöðu gögnin eru öll í samnefndu skema, **Nustada**. Athugið að nústaða gagna er nýjasta staða sem við eigum, það er ekki gefið að þetta séu rauntímagögn. Söguleg gögn innihalda gagnasögu og eru í skema sem heitir **Saga**. Athugið að sagan er uppfærð daglega, ef gögnin breytast oftar en það koma þær breytingar ekki hér inn. Þetta er gagnasaga til almennrar greiningar, ekki auditing eða breytingasaga.
+Venslin í þessu viðmóti skiptast í tvo flokka, nústöðu og söguleg gögn. Nústöðu gögnin eru öll í samnefndu skema, **nustada**. Athugið að nústaða gagna er nýjasta staða sem við eigum, það er ekki gefið að þetta séu rauntímagögn. Söguleg gögn innihalda gagnasögu og eru í skema sem heitir **saga**. Athugið að sagan er uppfærð daglega, ef gögnin breytast oftar en það koma þær breytingar ekki hér inn. Þetta er gagnasaga til almennrar greiningar, ekki auditing eða breytingasaga.
 
 {% for rel in relations -%}
 ## {{ rel.schema_name }}.{{ rel.relation_name }}

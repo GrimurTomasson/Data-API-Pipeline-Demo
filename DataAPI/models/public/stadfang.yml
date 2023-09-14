@@ -55,7 +55,7 @@ models:
           - not_null
       - name: veffang
         tests:
-          - not_always_null
+          - not_null
       - name: heitinumer
         tests:
           - not_null
